@@ -25,12 +25,12 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.on("text", async (ctx) => {
   if (ctx.message.text === "/start") {
     ctx.reply(
-      "Hi I am IOTP chatbot. If you have any questions regarding IOTP reception, you can ask me."+
-      " Use this command /CheckCrowd to check how many people are at the reception area"
+      "Hi I am IOTP chatbot. If you have any questions regarding IOTP reception, you can ask me." +
+        " Use this command /CheckCrowd to check how many people are at the reception area"
     );
   } else if (ctx.message.text === "/CheckCrowd") {
     const data = await collection.findOne();
-    const {timestamp, value} = data;
+    const { timestamp, value } = data;
     ctx.reply("As of " + timestamp + " there are: " + value);
   } else {
     const { Wit, log } = require("node-wit");
@@ -42,7 +42,7 @@ bot.on("text", async (ctx) => {
     var wit = await client.message(msg);
     console.log("wit reply", wit);
 
-    const intent = wit.intents[0]?.name;
+    const intent = wit.intents[0]?.name.replaceAll("_", " ");
     console.log("intent", intent);
 
     switch (intent) {
@@ -52,20 +52,18 @@ bot.on("text", async (ctx) => {
         console.log(greeting[x]);
         ctx.reply(greeting[x]);
         break;
-      case !undefined:
-        // code block
+      case undefined:
+        ctx.reply("Sorry I do not understand");
+        break;
+      default:
         for (let i = 0; i < faq.length; i++) {
+          console.log(faq[i]);
           if (intent.toLowerCase().includes(faq[i].question.toLowerCase())) {
-            ctx.reply(faq[i].answer);
-            break;
+            return ctx.reply(faq[i].answer);
           }
         }
         ctx.reply("Sorry I do not have an answer to that question");
         break;
-
-      default:
-        ctx.reply("Sorry I do not understand");
-      // code block
     }
   }
 

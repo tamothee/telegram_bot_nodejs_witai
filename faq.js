@@ -1,13 +1,4 @@
 export const faq = [
-  // {
-  //   question: "What is your name?",
-  //   answer: "My name is ChatGPT.",
-  // },
-  // {
-  //   question: "What can you do?",
-  //   answer:
-  //     "I can answer questions and provide information on a wide range of topics.",
-  // },
   {
     question: "What are the operating hours",
     answer: "We are open on Monday to Friday 8am to 10pm"
