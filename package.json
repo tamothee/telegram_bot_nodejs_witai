@@ -1,0 +1,26 @@
+{
+  "name": "telegram_bot_nodejs_witai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tamothee/telegram_bot_nodejs_witai.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tamothee/telegram_bot_nodejs_witai/issues"
+  },
+  "homepage": "https://github.com/tamothee/telegram_bot_nodejs_witai#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "node-wit": "^6.5.1",
+    "realm": "^11.4.0",
+    "telegraf": "^4.11.2"
+  }
+}
