@@ -29,8 +29,9 @@ bot.on("text", async (ctx) => {
         " Use this command /CheckCrowd to check how many people are at the reception area"
     );
   } else if (ctx.message.text === "/CheckCrowd") {
-    const data = await collection.findOne();
-    const { timestamp, value } = data;
+    const data = await collection.find({}, {sort:{_id: -1}, limit:1});
+    const { timestamp, value } = data[0];
+    console.log(data)
     ctx.reply("As of " + timestamp + " there are: " + value);
   } else {
     const { Wit, log } = require("node-wit");
@@ -66,14 +67,7 @@ bot.on("text", async (ctx) => {
         break;
     }
   }
-
-  // client.message("hello", {}).then((data) => {
-  //   console.log("wit reply" + JSON.stringify(data));
-  // });
-  // ctx.reply("hello there!");
 });
-
-bot.command("oldschool", (ctx) => ctx.reply("oldschool"));
 
 bot.launch();
 process.once("SIGINT", () => bot.stop("SIGINT"));

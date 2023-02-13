@@ -19,7 +19,9 @@
   "homepage": "https://github.com/tamothee/telegram_bot_nodejs_witai#readme",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "mqtt": "^4.3.7",
     "node-wit": "^6.5.1",
+    "nodemailer": "^6.9.1",
     "realm": "^11.4.0",
     "telegraf": "^4.11.2"
   }
